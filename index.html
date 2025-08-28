@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calma - Deine Finanzen. Endlich einfach.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .hero-section {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title .blue {
+            color: #4A90E2;
+        }
+
+        .hero-title .dark {
+            color: #2c3e50;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .features {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .feature::before {
+            content: "✓";
+            color: #4A90E2;
+            font-weight: bold;
+        }
+
+        .why-section {
+            background: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .why-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .why-title .blue {
+            color: #4A90E2;
+        }
+
+        .why-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit {
+            text-align: left;
+        }
+
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+
+        .blue-icon { background: #4A90E2; }
+        .green-icon { background: #27ae60; }
+        .orange-icon { background: #f39c12; }
+        .white-icon { background: #ffffff; }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .benefit-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #4A90E2, #27ae60);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 24px;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #4A90E2;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-feature::before {
+            content: "✓";
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            width: 24px;
+            height: 24px;
+            background: #4A90E2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .footer-brand-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .footer-description {
+            color: #6c757d;
+            margin-bottom: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-copyright {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .why-title, .cta-title {
+                font-size: 2rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">
+            <span class="blue">Deine Finanzen.</span><br>
+            <span class="dark">Endlich calma.</span>
+        </h1>
+        <p class="hero-subtitle">
+            Die Schweizer Plattform, die all deine Finanzen an einem Ort vereint.
+        </p>
+        <div class="features">
+            <div class="feature">Schweizer Sicherheit & Datenschutz</div>
+            <div class="feature">Keine nervigen Anrufe & kein SPAM</div>
+            <div class="feature">Inteligente Entscheide & transparente Prozesse</div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-section">
+        <h2 class="why-title">Warum <span class="blue">calma</span>?</h2>
+        <p class="why-subtitle">
+            Wir setzen neue Massstäbe und nutzen moderne Technologie zu deine Vorteil.
+        </p>
+        
+        <div class="benefits-grid">
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">🇨🇭</div>
+                    <h3 class="benefit-title">Swissness</h3>
+                </div>
+                <p class="benefit-description">
+                    Höchste Sicherheit und Qualität. Keine Kompromisse.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">➰</div>
+                    <h3 class="benefit-title">Einfachheit</h3>
+                </div>
+                <p class="benefit-description">
+                    Verwaltung eine Daten mit bester UX. Convenient und einfach zu nutzen.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">🔒</div>
+                    <h3 class="benefit-title">Sicherheit & Ehrlichkeit</h3>
+                </div>
+                <p class="benefit-description">
+                    Vertrauen und Zuverlässigkeit stehen im Zentrum unserer Plattform.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">🥛</div>
+                    <h3 class="benefit-title">Transparenz</h3>
+                </div>
+                <p class="benefit-description">
+                    Vollständige Transparenz und Unabhängigkeit für alle deine Entscheidungen.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">🐕‍🦺</div>
+                    <h3 class="benefit-title">Lebensbegleiter</h3>
+                </div>
+                <p class="benefit-description">
+                    Mit Sicherheit immer dabei - keine falschen Versprechungen.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <div class="benefit-header">
+                    <div class="benefit-icon white-icon">⛳️</div>
+                    <h3 class="benefit-title">Einzigartigkeit</h3>
+                </div>
+                <p class="benefit-description">
+                    Flexibilität und Raum offen lassen für Wachstum in verschiedenen Richtungen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-icon">&nbsp;</div>
+        <h2 class="cta-title">Bereit für ein ruhigeres Leben?</h2>
+        <p class="cta-subtitle">
+            Werde Teil der Schweizer Finanz-Revolution. Einfach, sicher und transparent – so wie es sein sollten.
+        </p>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Unser Reise verfolgen 🚡</a>
+        </div>
+        <div class="cta-features">
+            <div class="cta-feature">einfach</div>
+            <div class="cta-feature">sicher</div>
+            <div class="cta-feature">transparent</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <div class="footer-logo">c</div>
+            <span class="footer-brand-name">calma</span>
+        </div>
+        <p class="footer-description">
+            Die Schweizer Plattform für alle deine Finanzen. Einfach, sicher und transparent.
+        </p>
+        <p class="footer-copyright">
+           gocalma.ch - Alle Rechte vorbehalten
+        </p>
+    </footer>
+</body>
+</html>
